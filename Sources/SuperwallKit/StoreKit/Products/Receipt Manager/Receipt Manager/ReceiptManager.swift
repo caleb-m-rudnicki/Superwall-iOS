@@ -71,7 +71,7 @@ actor ReceiptManager {
 
   private func setAppTransactionId() async {
     #if compiler(>=6.1)
-    if #available(iOS 16.0, *) {
+    if #available(iOS 16.0, *), storeKitVersion == .storeKit2 {
       if let result = try? await AppTransaction.shared {
         switch result {
         case .verified(let transaction),
